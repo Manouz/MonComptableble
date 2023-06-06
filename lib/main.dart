@@ -16,6 +16,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -24,6 +26,8 @@ class _MyAppState extends State<MyApp> {
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.orangeAccent),
+        fontFamily: 'Quicksand',
+        
       ),
       home: MyHomePage(),
     );
