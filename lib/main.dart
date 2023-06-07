@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:moncomptable/widgets/chart.dart';
 
 import './models/transaction.dart';
 import './widgets/new_transaction.dart';
@@ -16,8 +17,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -27,7 +26,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.orangeAccent),
         fontFamily: 'Quicksand',
-        
+        // appBarTheme: AppBarTheme()
       ),
       home: MyHomePage(),
     );
@@ -47,6 +46,11 @@ class _MyHomePageState extends State<MyHomePage> {
     Transaction(
         id: "t2", title: "new shoes grey", amount: 10, date: DateTime.now()),
   ];
+  List<Transaction> get _recentTransactions {
+    return _userTransactions.where((tx) {
+      return tx.date.isAfter(DateTime.now().subtract(Duration(days: 7)));
+    }).toList();
+  }
 
   //manage a list of transaction
   void _addnewTransactions(String nTTitle, double nTAmount) {
@@ -88,13 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              color: Colors.greenAccent,
-              child: Padding(
-                padding: const EdgeInsets.all(100.0),
-                child: Center(child: Text("première partie")),
-              ),
-            ),
+            Chart(_recentTransactions),
             Container(
               child: Column(
                 children: [TransactionList(_userTransactions)],

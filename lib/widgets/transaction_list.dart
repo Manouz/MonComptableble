@@ -11,7 +11,8 @@ class TransactionList extends StatelessWidget {
     return Container(
         color: const Color.fromARGB(80, 158, 158, 158),
         height: MediaQuery.of(context).size.height / 4,
-        child: ListView.builder(
+        child: transactions.isEmpty ? Container(height:300,child: Image.asset("assets/images/waiting.png"),) :
+        ListView.builder(
           itemCount: transactions.length,
           itemBuilder: (ctx, index) {
             return Card(
