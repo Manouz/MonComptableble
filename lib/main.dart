@@ -108,6 +108,17 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       /*  drawer: DrawerButton(
         onPressed: () {},
+          fonts:
+    - family: OpensSans
+      fonts:
+        - asset: fonts/OpensSans-Bold.ttf
+        - asset: fonts/OpensSans-Regular.ttf
+          weight: 700
+    - family: Quicksand
+      fonts:
+        - asset: fonts/Quicksand-Bold.ttf
+        - asset: fonts/TrajanPro_Regular.ttf
+          weight: 700
       ), */
     );
   }
