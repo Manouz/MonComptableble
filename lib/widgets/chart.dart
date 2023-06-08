@@ -23,6 +23,12 @@ class Chart extends StatelessWidget {
     });
   }
 
+  double get totalSpending {
+    return groupedTransactionValue.fold(0.0, (sum, item) {
+      return sum + (item['amount'] as double);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     print(groupedTransactionValue);
@@ -30,9 +36,19 @@ class Chart extends StatelessWidget {
       elevation: 6,
       margin: EdgeInsets.all(20),
       child: Row(
-       /*  children: groupedTransactionValue.map((e) {
-          return ChartBar("${e['day']}", spendingAmount, e[total]),
-        }).toList(), */
+        children: groupedTransactionValue.map((e) {
+          return /* Container(
+            width: 39,
+            height: 12,
+            color: Colors.amber,
+          ); */
+              ChartBar(
+                  e['day'] as String,
+                  e['amount'] as double,
+                  totalSpending == 0.0
+                      ? 0.0
+                      : (e['amount'] as double) / totalSpending);
+        }).toList(),
       ),
     );
   }
