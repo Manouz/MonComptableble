@@ -43,7 +43,7 @@ class Chart extends StatelessWidget {
             color: Colors.amber,
           ); */
               ChartBar(
-                  e['day'] as String,
+                  e['day'].toString(),
                   e['amount'] as double,
                   totalSpending == 0.0
                       ? 0.0
